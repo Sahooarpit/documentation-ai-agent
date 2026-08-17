@@ -21,6 +21,7 @@ This is a Streamlit application that allows you to ask questions about the LangC
    ```
    OPENAI_API_KEY="your-openai-api-key"
    PINECONE_API_KEY="your-pinecone-api-key"
+   TAVILY_API_KEY="your-tavily-api-key"
    ```
 
 3. **Run the Streamlit application**:
@@ -38,3 +39,14 @@ The application uses a RAG pipeline to answer questions about the LangChain docu
 - **Pinecone**: The LangChain documentation is stored in a Pinecone vector store, which is used to retrieve relevant documents based on the user's query.
 
 When a user asks a question, the application retrieves the most relevant documents from the Pinecone vector store. The retrieved documents are then passed to the OpenAI model, which generates an answer based on the retrieved information. The application then displays the answer to the user, along with the sources that were used to generate the answer.
+
+## Ingesting documents
+
+To ingest the LangChain documentation, you need to run the `ingestion.py` script. This script will crawl the LangChain documentation, split the documents into chunks, and store them in a Chroma vector store.
+
+1. **Run the ingestion script**:
+   ```bash
+   python ingestion.py
+   ```
+
+This will create a `chroma_db` directory in the root of the project, which will contain the vectorized documentation.
